@@ -1,0 +1,26 @@
+1- // 1->2->3->2->4->5  1->2->3->4->5->1
+// i (slow), j (fast)
+
+2 - 
+// 1->2->null
+reverseLinkedList(Node head) {
+	Node curr = head; //curr = 1
+	Node prevNode = null;
+	Node nextNode = null;
+	
+	while(curr.next!=null) {
+		nextNode = curr.next; //nextNode = 2 nextNode = null
+		curr.next = prevNode; //curr.next = null => 1->null  curr.next = 1
+		prevNode = curr; //prevNode = 1;  prevNode = 2
+		curr = nextNode; //curr = 2 curr = null  2->1->null
+	}
+	head = prevNode;
+	return head;
+}
+
+
+3- intersection of y shaped linked list 
+4- nearest greater to right
+// 4 2 3 5
+
+   

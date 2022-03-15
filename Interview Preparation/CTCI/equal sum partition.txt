@@ -1,0 +1,91 @@
+// Equal sum partition 
+
+// Given an array, divide the array such that sum of each array is equal.
+
+// ex: array[] = 3 2 5 10  
+import java.util.*;
+import java.lang.Math;
+boolean sumPartition(int[] array, int n) {
+	int sum = 0; 
+	if(int i=0;i<n;i++) {
+		sum = sum + array[i];
+	}
+	if(sum%2==1) 
+		return false;
+
+	else if(subSet(array,n,sum/2))
+		return true;
+	return false;
+}
+// subSet sum 
+boolean subSet(int[] wt, int n, int sum) {
+	if(sum== 0)
+		return true;
+	else if(n==0)
+		return false;
+	else if(wt[n-1]<=sum) {
+		return subSet(wt[],n-1,sum-wt[n-1]) || subSet(wt[], n-1,sum);
+	}
+	else {
+		return subSet(wt[], n-1, sum);
+	}
+}
+
+//memoization
+boolean sumPartition(int[] array, int n) {
+	int sum=0;
+	if(int i=0;i<n;i++)
+		sum = sum+array[i];
+	if(sum%2==1)
+		return false;
+	else if(subSet(array, sum/2))
+		return true;
+	return false;
+}
+boolean subSet(int[] array, int n) {
+	int memo[][] = new int[n+1][w+1];
+	memo[][] = {-1]
+	if(sum == 0)
+		return true;
+	else if(n == 0)
+		return false;
+	else if(memo[n-1][w-1]!=-1)
+		return memo[n-1][w-1];
+	else if(wt[n-1]<=sum)
+		return memo[n-1][w-1] = subSet(wt[],n-1,sum-wt[n-1]) || subSet(wt[], n-1, sum);
+	else if(wt[n-1]>sum) 
+		return memo[n-1]w-1] = subSet(wt[],n-1,sum);
+
+}
+
+//Top Down
+boolean sumPartition(int[] array, int n) {
+	int sum=0;
+	if(int i=0;i<n;i++)
+		sum = sum+array[i];
+	if(sum%2==1)
+		return false;
+	else if(subSet(array, sum/2))
+		return true;
+	return false;
+}
+
+boolean subSet(int[] array, int n) {
+	int[] dp = new int[n+1][w+1];
+	for(int i=0;i<n+1;i++) {
+		for(int j=0;j<w+1;j++) {
+			if(sum==0)
+				dp[i][j]=1;
+			else if(n==0)
+				dp[i][j]=0;
+		}
+	}
+	for(int i=1;i<n+1;i++) {
+		for(int j=1;j<w+1;j++) {
+			if(wt[i-1]<=j)
+				dp[i][j] = dp[i-1][wt[i-1]-j] || dp[i-1][j];
+			else if(wt[i-1]>j)
+				dp[i][j] = dp[i-1][j];
+		}
+	}
+}
